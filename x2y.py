@@ -4,7 +4,7 @@ from xml.dom import minidom
 import os
 import glob
 
-lut={"Gun": 0}
+lut={"Gun": 0} #dict with objects to detect
 lut["accessory"] =0
 lut["top"]       =1
 lut["bottom"]    =2
@@ -43,7 +43,7 @@ def convert_xml2yolo( lut ):
 
             for item in itemlist:
                 # get class label
-                classid =  (item.getElementsByTagName('name')[0]).firstChild.data
+                classid =  (item.getElementsByTagName('name')[0]).firstChild.data # classid refers to object name
                 if classid in lut:
                     label_str = str(lut[classid])
                 else:
